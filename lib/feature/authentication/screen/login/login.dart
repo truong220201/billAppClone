@@ -1,7 +1,12 @@
 import 'package:bill_app/main.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class LoginScreen extends StatelessWidget {
+import '../../../home/home_page.dart';
+import 'login_view_model.dart';
+import 'repository/login_repository.dart';
+
+class LoginScreen extends GetView<LoginViewModel> {
   final Color? primaryColor;
   final Color? backgroundColor;
   final AssetImage backgroundImage;
@@ -15,6 +20,8 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.lazyPut(() => LoginViewModel());
+    Get.lazyPut(() => LoginRepository());
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
@@ -200,12 +207,11 @@ class LoginScreen extends StatelessWidget {
                           ],
                         ),
                         onPressed: () => {
+                          controller.onPressTest(),
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const MyHomePage(
-                                      title: '',
-                                    )),
+                                builder: (context) => const MyHomePageEx()),
                           )
                         },
                       ),

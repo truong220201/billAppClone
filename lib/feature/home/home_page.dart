@@ -13,8 +13,8 @@ void _handleURLButtonPress(BuildContext context, var type) {
   //     );
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({
+class MyHomePageEx extends StatefulWidget {
+  const MyHomePageEx({
     super.key,
     this.img,
     this.nameImg,
@@ -24,10 +24,10 @@ class MyHomePage extends StatefulWidget {
   final String? nameImg;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<MyHomePageEx> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePageEx> {
   double? lat = 21;
   double? long = 105;
   String? address = '';
