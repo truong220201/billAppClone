@@ -8,8 +8,9 @@ import 'package:flutter/services.dart';
 import '../upload/upload.dart';
 
 void _handleURLButtonPress(BuildContext context, var type) {
-  Navigator.push(context,
-      MaterialPageRoute(builder: (context) => ImageFromGalleryEx(type)));
+  // Navigator.push(context,
+  //     MaterialPageRoute(builder: (context) => ImageFromGalleryEx(type))
+  //     );
 }
 
 class MyHomePage extends StatefulWidget {
@@ -284,10 +285,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   ))
                 : Scaffold(
                     key: scaffoldKey,
-                    endDrawer: AppDrawer(
-                      img: widget.img,
-                      token: token,
-                    ),
+                    // endDrawer:
+                    // AppDrawer(
+                    //   img: widget.img,
+                    //   token: token,
+                    // ),
                     body: Container(
                       height: fullHeight,
                       width: double.infinity,
