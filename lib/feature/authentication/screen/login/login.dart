@@ -1,3 +1,4 @@
+import 'package:bill_app/main.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -198,7 +199,15 @@ class LoginScreen extends StatelessWidget {
                             )
                           ],
                         ),
-                        onPressed: () => {},
+                        onPressed: () => {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const MyHomePage(
+                                      title: '',
+                                    )),
+                          )
+                        },
                       ),
                     ),
                   ],
