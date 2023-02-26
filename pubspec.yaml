@@ -41,6 +41,8 @@ dependencies:
   get_state_manager: ^3.13.0
   get: ^4.6.5
   dio: ^5.0.0
+  shared_preferences: ^0.5.5
+  binder: ^0.4.0
 
 dev_dependencies:
   flutter_test:

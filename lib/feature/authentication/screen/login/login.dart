@@ -1,8 +1,6 @@
-import 'package:bill_app/main.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../home/home_page.dart';
 import 'login_view_model.dart';
 import 'repository/login_repository.dart';
 
@@ -10,8 +8,7 @@ class LoginScreen extends GetView<LoginViewModel> {
   final Color? primaryColor;
   final Color? backgroundColor;
   final AssetImage backgroundImage;
-
-  const LoginScreen({
+  LoginScreen({
     super.key,
     this.primaryColor = Colors.green,
     this.backgroundColor = Colors.white,
@@ -22,6 +19,7 @@ class LoginScreen extends GetView<LoginViewModel> {
   Widget build(BuildContext context) {
     Get.lazyPut(() => LoginViewModel());
     Get.lazyPut(() => LoginRepository());
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
@@ -99,11 +97,14 @@ class LoginScreen extends GetView<LoginViewModel> {
                       color: Colors.grey.withOpacity(0.5),
                       margin: const EdgeInsets.only(left: 00.0, right: 10.0),
                     ),
-                    const Expanded(
+                    Expanded(
                       child: TextField(
-                        decoration: InputDecoration(
+                        onChanged: (value) {
+                          controller.emailOrUserName = value;
+                        },
+                        decoration: const InputDecoration(
                           border: InputBorder.none,
-                          hintText: 'Enter your email',
+                          hintText: 'Nhap email hoac username',
                           hintStyle: TextStyle(color: Colors.grey),
                         ),
                       ),
@@ -144,11 +145,12 @@ class LoginScreen extends GetView<LoginViewModel> {
                       color: Colors.grey.withOpacity(0.5),
                       margin: const EdgeInsets.only(left: 00.0, right: 10.0),
                     ),
-                    const Expanded(
+                    Expanded(
                       child: TextField(
-                        decoration: InputDecoration(
+                        onChanged: (value) => controller.password = value,
+                        decoration: const InputDecoration(
                           border: InputBorder.none,
-                          hintText: 'Enter your password',
+                          hintText: 'Nhap password',
                           hintStyle: TextStyle(color: Colors.grey),
                         ),
                       ),
@@ -207,12 +209,8 @@ class LoginScreen extends GetView<LoginViewModel> {
                           ],
                         ),
                         onPressed: () => {
-                          controller.onPressTest(),
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const MyHomePageEx()),
-                          )
+                          controller.onPressTest(context,
+                              controller.emailOrUserName, controller.password),
                         },
                       ),
                     ),

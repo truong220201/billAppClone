@@ -1,10 +1,30 @@
+import 'package:bill_app/feature/home/home_page.dart';
+import 'package:bill_app/feature/home/home_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'feature/authentication/screen/login/login.dart';
 import 'feature/authentication/screen/login/login_view_model.dart';
+import 'package:binder/binder.dart';
 
+import 'feature/home/home_binder.dart';
+
+// void main() {
+//   runApp(MyApp());
+// }
 void main() {
-  runApp(MyApp());
+  runApp(GetMaterialApp(
+    initialRoute: '/',
+    getPages: [
+      GetPage(
+        name: '/',
+        page: () => LoginScreen(),
+      ),
+      GetPage(
+          name: '/home',
+          page: () => const MyHomePageEx(),
+          binding: HomeBinder()),
+    ],
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -14,58 +34,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       home: LoginScreen(),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
