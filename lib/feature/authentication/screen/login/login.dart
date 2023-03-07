@@ -5,6 +5,7 @@ import 'login_view_model.dart';
 import 'repository/login_repository.dart';
 
 class LoginScreen extends GetView<LoginViewModel> {
+  static const String routePath = '/LoginPage';
   final Color? primaryColor;
   final Color? backgroundColor;
   final AssetImage backgroundImage;

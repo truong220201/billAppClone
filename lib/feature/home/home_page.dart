@@ -6,6 +6,7 @@ import '../../widgets/button/simple_round_icon_button.dart';
 import './widgets/app_drawer.dart';
 
 class MyHomePageEx extends GetView<HomeViewModel> {
+  static const String routePath = '/HomePage';
   const MyHomePageEx({
     super.key,
   });
